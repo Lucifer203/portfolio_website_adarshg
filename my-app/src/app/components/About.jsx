@@ -28,9 +28,11 @@ const About = () => {
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold">Computer Engineer</h2>
           <p className="text-gray-600 leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Necessitatibus qui sit incidunt tempora velit molestiae doloremque
-            officiis.
+            A tech enthusiast with proficiency in web development, always eager
+            to learn and explore new technologies. Passionate about Artificial
+            Intelligence and continuously expanding my knowledge in AI and its
+            applications. Striving to innovate and build impactful solutions
+            every day!
           </p>
 
           {/* Info Grid (Aligned Width) */}
