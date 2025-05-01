@@ -290,47 +290,49 @@ const SkillsSection = () => {
   };
 
   return (
-    <div className=" bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-[#31A3DC] mb-12">
-          Skills & Expertise
-        </h2>
+    <section id="skills">
+      <div className=" bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-extrabold text-center text-[#31A3DC] mb-12">
+            Skills & Expertise
+          </h2>
 
-        <div className="flex justify-center space-x-4 mb-8">
-          {Object.keys(skillCategories).map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveTab(category)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                activeTab === category
-                  ? skillCategories[category].color + " text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {skillCategories[category].title}
-            </button>
-          ))}
-        </div>
+          <div className="flex justify-center space-x-4 mb-8">
+            {Object.keys(skillCategories).map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveTab(category)}
+                className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                  activeTab === category
+                    ? skillCategories[category].color + " text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
+              >
+                {skillCategories[category].title}
+              </button>
+            ))}
+          </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {skillCategories[activeTab].skills.map((skill, index) => (
-            <div
-              key={index}
-              className="relative group bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className={`p-4 rounded-full ${skill.color} text-white`}>
-                  <skill.icon className="w-8 h-8" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {skillCategories[activeTab].skills.map((skill, index) => (
+              <div
+                key={index}
+                className="relative group bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <div className="flex flex-col items-center space-y-4">
+                  <div className={`p-4 rounded-full ${skill.color} text-white`}>
+                    <skill.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {skill.name}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {skill.name}
-                </h3>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,48 +1,15 @@
-// import React from "react";
-// import Link from "next/link";
-
-// const Navbar = () => {
-//   return (
-//     <>
-//       <div className="w-full h-12 ">
-//         {/** Logo Section */}
-
-//         <div>
-//             <h2>AG</h2>
-//         </div>
-
-//         {/**Navigation Links */}
-//         <div className="flex flex-row items-center justify-center gap-8 mt-2 ">
-//           <Link href="/">
-//             <div className="hover:text-[#31A3DC] cursor-pointer ">Home</div>
-//           </Link>
-//           <Link href="/about">
-//             <div className="hover:text-[#31A3DC] cursor-pointer">About</div>
-//           </Link>
-//           <Link href="/skill">
-//             <div className="hover:text-[#31A3DC] cursor-pointer">Skill</div>
-//           </Link>
-//           <Link href="/service">
-//             <div className="hover:text-[#31A3DC] cursor-pointer">Service</div>
-//           </Link>
-//           <Link href="/blog">
-//             <div className="hover:text-[#31A3DC] cursor-pointer">Blog</div>
-//           </Link>
-//           <Link href="/contact">
-//             <div className="hover:text-[#31A3DC] cursor-pointer">Contact</div>
-//           </Link>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Navbar;
-
 import React from "react";
-import Link from "next/link";
+import useActiveSection from "../hooks/useActiveSection";
 
 const Navbar = ({ show }) => {
+  const sectionIds = ["hero", "about", "skills", "service", "blog", "contact"];
+  const activeSection = useActiveSection(sectionIds);
+
+  const linkClass = (id) =>
+    `hover:text-[#31A3DC] cursor-pointer transition ${
+      activeSection === id ? "text-[#31A3DC] font-bold " : ""
+    }`;
+
   return (
     <nav
       className={`fixed top-0 z-50 left-0 w-full h-16 flex items-center justify-between px-10 shadow-md bg-white transition-transform ${
@@ -58,38 +25,20 @@ const Navbar = ({ show }) => {
 
       {/** Navigation Links */}
       <div className="flex space-x-6 text-gray-700 font-medium">
-        <Link href="/">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Home</div>
-        </Link>
-        <Link href="/about">
-          <div className="hover:text-[#31A3DC] cursor-pointer">About</div>
-        </Link>
-
-        <Link href="/skill">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Skill</div>
-        </Link>
-        <Link href="/service">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Service</div>
-        </Link>
-        <Link href="/portfolio">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Portfolio</div>
-        </Link>
-
-        <Link href="/blog">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Blog</div>
-        </Link>
-        <Link href="/contact">
-          <div className="hover:text-[#31A3DC] cursor-pointer">Contact</div>
-        </Link>
+        {sectionIds.map((id) => (
+          <a key={id} href={`#${id}`} className={linkClass(id)}>
+            {id.charAt(0).toUpperCase() + id.slice(1)}
+          </a>
+        ))}
       </div>
 
       {/** Hire Me Button */}
       <div>
-        <Link href="/hire">
+        <a href="/hire">
           <button className="px-5 py-2 border-2 border-[#31A3DC] text-[#31A3DC] rounded-full hover:bg-[#31A3DC] hover:text-white transition">
             Hire Me
           </button>
-        </Link>
+        </a>
       </div>
     </nav>
   );

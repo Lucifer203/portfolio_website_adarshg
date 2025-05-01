@@ -13,13 +13,6 @@ const Hero = ({ setShowNavbar }) => {
         const heroHeight = heroRef.current.offsetHeight;
         const scrollPosition = window.scrollY;
 
-        console.log(
-          "Scroll Position:",
-          scrollPosition,
-          "Hero Height:",
-          heroHeight
-        ); // Debugging Log
-
         setShowNavbar(scrollPosition > heroHeight * 0.5);
         setShowArrow(scrollPosition < heroHeight * 0.01);
       }
@@ -60,9 +53,15 @@ const Hero = ({ setShowNavbar }) => {
             />
           </p>
           <div className="flex space-x-6 mt-4">
-            <button className="px-6 py-3 border-2 border-white rounded-full font-medium hover:bg-white hover:text-[#31A3DC] transition-all">
-              Download CV
-            </button>
+            <a
+              href="https://drive.google.com/file/d/1C9PZxdQjNDfIYxcA7jidtyphwP6en471/view?usp=drive_link"
+              download
+              target="_blank"
+            >
+              <button className="px-6 py-3 border-2 border-white rounded-full font-medium hover:bg-white hover:text-[#31A3DC] transition-all">
+                Download CV
+              </button>
+            </a>
           </div>
         </div>
         {showArrow && (

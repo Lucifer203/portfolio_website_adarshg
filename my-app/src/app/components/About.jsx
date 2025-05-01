@@ -3,7 +3,10 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <section className="flex flex-col items-center justify-center py-16 px-6 bg-gray-50">
+    <section
+      className="flex flex-col items-center justify-center py-16 px-6 bg-gray-50"
+      id="about"
+    >
       {/* Section Title */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-extrabold text-[#31A3DC]">About Me</h2>
@@ -28,11 +31,11 @@ const About = () => {
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold">Computer Engineer</h2>
           <p className="text-gray-600 leading-relaxed">
-            A tech enthusiast with proficiency in web development, always eager
-            to learn and explore new technologies. Passionate about Artificial
-            Intelligence and continuously expanding my knowledge in AI and its
-            applications. Striving to innovate and build impactful solutions
-            every day!
+            Computer Engineering student passionate about AI, web development,
+            and building impactful tech solutions. Experienced in full-stack
+            development and AI/ML projects using GANs, Transformers, and NLP.
+            Quick learner with strong problem-solving skills and a drive to
+            explore emerging technologies.
           </p>
 
           {/* Info Grid (Aligned Width) */}

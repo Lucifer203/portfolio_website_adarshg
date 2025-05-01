@@ -1,6 +1,7 @@
+"use client";
 import { useState, useEffect } from "react";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
-import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,12 @@ const ContactSection = () => {
     return newErrors;
   };
 
+  useEffect(() => {
+    console.log("Service ID:", process.env.NEXT_PUBLIC_SERVICE_ID);
+    console.log("Template ID:", process.env.NEXT_PUBLIC_TEMPLATE_ID);
+    console.log("Public Key:", process.env.NEXT_PUBLIC_PUBLIC_KEY);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -51,8 +58,20 @@ const ContactSection = () => {
     if (Object.keys(formErrors).length === 0) {
       setIsSubmitting(true);
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const templateParams = {
+          from_name: formData.fullName,
+          from_email: formData.email,
+          message: formData.message,
+          phone: formData.phone,
+        };
+
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_SERVICE_ID,
+          process.env.NEXT_PUBLIC_TEMPLATE_ID,
+          templateParams,
+          process.env.NEXT_PUBLIC_PUBLIC_KEY
+        );
+
         setIsSuccess(true);
         setFormData({
           fullName: "",
@@ -62,12 +81,16 @@ const ContactSection = () => {
         });
         setCharCount(0);
       } catch (error) {
-        console.error("Error submitting form:", error);
+        console.error("Error sending email:", error);
       } finally {
         setIsSubmitting(false);
       }
     }
   };
+
+  useEffect(() => {
+    emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY);
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -95,7 +118,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-16 ">
+    <section className="py-16 " id="contact">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">

@@ -71,7 +71,7 @@ const TimelineItem = ({ title, company, duration }) => {
 
 const Education = () => {
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center py-10 px-6">
+    <section className="relative z-10 flex flex-col items-center justify-center py-10 px-6" id="education">
       {/* Section Title */}
       <div className="text-center pb-10">
         <h2 className="text-4xl font-extrabold text-[#31A3DC]">
@@ -98,7 +98,7 @@ const Education = () => {
           <TimelineItem
             title="Front End Developer"
             company="Tuna Technology"
-            duration="Dec 2024 - Present"
+            duration="Dec 2024 - Feb 2025"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis accusantium et cupiditate exercitationem."
           />
         </div>
